@@ -3,30 +3,34 @@
         <category>custom</category>
         <client_script><![CDATA[function($scope,$http,snRecordWatcher,$rootScope) {
     /* widget controller */
+    var limit = 10;
     var c = this;
         c.data.loading = true;
         c.data.table = c.options.table || "incident";
         c.data.query = c.options.query || "";
         c.data.template = c.options.template || "task-category";
         function getData(){
-        $http.get('/api/now/table/'+c.data.table+'?sysparm_limit=10&sysparm_query='+c.data.query).success(function(response){
+        $http.get('/api/now/table/'+c.data.table+'?sysparm_limit='+ limit +'&sysparm_query='+c.data.query).success(function(response){
             c.data.loading=false;
             c.data.list = response.result;
-            $rootScope.$broadcast("K18ListWidgetUpdated",c.data.list);
         });
         }
         getData();
         
-        snRecordWatcher.initList(c.data.table, c.data.query);
-        $scope.$on('record.updated', function(name, data) {
-            getData();
-        });
 
 
  }]]></client_script>
         <controller_as>c</controller_as>
-        <css>li {
-    background-color: red;
+        <css>$primary-color: #e5e5e5;
+
+li:nth-child(even) {
+    color: $primary-color;
+    background-color: #1F8476;
+}
+
+.panel-heading{
+
+ 
 }</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
@@ -51,7 +55,7 @@
         <sys_created_on>2019-04-29 22:45:37</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>c4b994324fc9bf009881c5c18110c73f</sys_id>
-        <sys_mod_count>2</sys_mod_count>
+        <sys_mod_count>10</sys_mod_count>
         <sys_name>My Simple List</sys_name>
         <sys_package display_value="sn-utils-assets" source="x_snc_sn_utils_ass">b13954be4f89bf009881c5c18110c7a8</sys_package>
         <sys_policy/>
@@ -59,7 +63,7 @@
         <sys_scope display_value="sn-utils-assets">b13954be4f89bf009881c5c18110c7a8</sys_scope>
         <sys_update_name>sp_widget_c4b994324fc9bf009881c5c18110c73f</sys_update_name>
         <sys_updated_by>Arnoud.Kooi</sys_updated_by>
-        <sys_updated_on>2019-05-08 11:50:23</sys_updated_on>
+        <sys_updated_on>2019-05-08 13:16:17</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{c.options.color}}">
   <!-- your widget template -->
   <div class="panel-heading">

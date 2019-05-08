@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>package_private</access>
+        <active>true</active>
+        <api_name>x_snc_sn_utils_ass.CreatorConUtils</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description>Only meant to demonstrate some SN Utils functions :)</description>
+        <name>CreatorConUtils</name>
+        <script><![CDATA[var CreatorConUtils = Class.create();
+CreatorConUtils.prototype = {
+	initialize: function() {
+	},
+	
+	doNothing : function(){
+		//todo: remove line 7 and 8, to actually do nothing
+		return "I hope you did hit CTRL/CMD -S to save this record :)";
+	},
+
+	//remove this line from cvs code and hit save
+	countMetaData : function(){
+		var classes = gs.getProperty('x_snc_sn_utils_ass.snutils_class_names');
+		var gaMetaData = new GlideAggregate('sys_metadata');
+		gaMetaData.addQuery('sys_class_name','IN',classes);
+		gaMetaData.addAggregate('COUNT');
+		gaMetaData.query();
+		var rows = 0;
+		if(gaMetaData.next()) 
+		   rows = gaMetaData.getAggregate('COUNT');
+
+		return rows;
+
+	},
+
+	//this contains a few bad practices eslint-plugin-servicenow will detect
+	someBadlideRecordQ: function(){
+		var gr = new GlideRecord('sys_script_include');
+		if (gr.get('fbb660ed4f913b409881c5c18110c760')) {
+			//gr.initialize();
+			gs.info('client_callable: ' + gr.getValue('client_callable'));
+			gs.info('access: ' + gr.getValue('access'));
+			gs.info('api_name: ' + gr.getValue('api_name'));
+			gs.info('caller_access: ' + gr.getValue('caller_access'));
+			gs.info('name: ' + gr.getValue('name'));
+			gs.info('active: ' + gr.getValue('active'));
+			gs.info('description: ' + gr.getValue('description'));
+			gs.info('sys_scope: ' + gr.getValue('sys_scope'));
+			gs.log('script: ' + gr.getValue('script'));
+			gs.info('sys_policy: ' + gr.getValue('sys_policy'));
+			//gr.update();
+			//gr.insert();
+			//gr.deleteRecord();
+
+			var list = new Packages.java.util.ArrayList();
+		}
+	},
+	
+	type: 'CreatorConUtils'
+};]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Arnoud.Kooi</sys_created_by>
+        <sys_created_on>2019-05-08 12:51:28</sys_created_on>
+        <sys_customer_update>false</sys_customer_update>
+        <sys_id>fbb660ed4f913b409881c5c18110c760</sys_id>
+        <sys_mod_count>4</sys_mod_count>
+        <sys_name>CreatorConUtils</sys_name>
+        <sys_package display_value="sn-utils-assets" source="x_snc_sn_utils_ass">b13954be4f89bf009881c5c18110c7a8</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_replace_on_upgrade>false</sys_replace_on_upgrade>
+        <sys_scope display_value="sn-utils-assets">b13954be4f89bf009881c5c18110c7a8</sys_scope>
+        <sys_update_name>sys_script_include_fbb660ed4f913b409881c5c18110c760</sys_update_name>
+        <sys_updated_by>Arnoud.Kooi</sys_updated_by>
+        <sys_updated_on>2019-05-08 13:44:52</sys_updated_on>
+    </sys_script_include>
+</record_update>
