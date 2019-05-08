@@ -25,7 +25,9 @@
 
  }]]></client_script>
         <controller_as>c</controller_as>
-        <css/>
+        <css>li {
+    background-color: red;
+}</css>
         <data_table>sp_instance</data_table>
         <demo_data/>
         <description/>
@@ -49,7 +51,7 @@
         <sys_created_on>2019-04-29 22:45:37</sys_created_on>
         <sys_customer_update>false</sys_customer_update>
         <sys_id>c4b994324fc9bf009881c5c18110c73f</sys_id>
-        <sys_mod_count>1</sys_mod_count>
+        <sys_mod_count>2</sys_mod_count>
         <sys_name>My Simple List</sys_name>
         <sys_package display_value="sn-utils-assets" source="x_snc_sn_utils_ass">b13954be4f89bf009881c5c18110c7a8</sys_package>
         <sys_policy/>
@@ -57,7 +59,7 @@
         <sys_scope display_value="sn-utils-assets">b13954be4f89bf009881c5c18110c7a8</sys_scope>
         <sys_update_name>sp_widget_c4b994324fc9bf009881c5c18110c73f</sys_update_name>
         <sys_updated_by>Arnoud.Kooi</sys_updated_by>
-        <sys_updated_on>2019-04-29 22:47:42</sys_updated_on>
+        <sys_updated_on>2019-05-08 11:50:23</sys_updated_on>
         <template><![CDATA[<div class="panel panel-{{c.options.color}}">
   <!-- your widget template -->
   <div class="panel-heading">
